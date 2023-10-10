@@ -22,7 +22,7 @@
             <br>
             <input type="number" name="Aula" id="Aula" placeholder="Qual(is) a(s) aula(s)" class="Aula" autocomplete="on" required>
             <br>
-            <button type="submit" name="Reservar" onclick="reservarProjetor()">Reservar</button>
+            <button type="submit" name="Reservar">Reservar</button>
         </form>
     </div>
     

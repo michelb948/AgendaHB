@@ -15,14 +15,20 @@ $senha = password_hash($senha, PASSWORD_DEFAULT);
 
 $con = require 'connection.php';
 
-if(!$con){
-    die("Conexão falhou!" . mysqli_connect_error());
+if(!isset($con)){
+    die("Conexão falhou!");
 }
-$sql = "INSERT INTO docentes(nome, senha, cpf) VALUES('$nome', '$senha', '$cpf')"; 
+$sql = "INSERT INTO docentes(nome, senha, cpf) VALUES(:nome, :senha, :cpf)"; 
 
-$rs = mysqli_query($con, $sql);
+$stmt = $con->prepare($sql);
+$stmt->bindParam(':nome', $nome);
+$stmt->bindParam(':senha', $senha);
+$stmt->bindParam(':cpf', $cpf);
+
+$rs = $stmt->execute();
 
 if($rs){
     echo "Professor(a) cadastrado(a) com sucesso :D !";
+} else {
+    echo 'Falha no cadastro';
 }
-?> 

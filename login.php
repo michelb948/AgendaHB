@@ -18,21 +18,21 @@
         Login
     </h1>
     
-    <form action="config1.php" method="POST">
+    <form action="controller-login.php" method="POST">
         <label for="cpf">CPF: *</label>
         <br>
-        <input type="number" name="cpf" placeholder="Digite seu cpf:" id="cpf" class="input" required autocomplete="off">
+        <input type="text" name="cpf" placeholder="Digite seu cpf:" id="cpf" class="input" required autocomplete="off">
         <br>
         <br>
         <label for="senha">Senha: *</label>
         <br>
-        <input type="text" name="senha" id="senha" placeholder="Digite sua senha:" class="input" required autocomplete="off">
+        <input type="password" name="senha" id="senha" placeholder="Digite sua senha:" class="input" required autocomplete="off">
         <br>
         <br>
         <button type="submit" name="Entrar" id="Entrar" class="btn2">Entrar</button>
         <br>
         <br>
-        <button type="submit" name="Cadastrar" id="Cadastrar" class="btn4" onclick="location.href='index.html'">Cadastrar</button>
+        <button type="click" name="Cadastrar" id="Cadastrar" class="btn4" onclick="location.href='index.html'">Cadastrar</button>
     </form>
     <style>
         form{
