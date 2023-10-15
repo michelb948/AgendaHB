@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Agendamento</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <script type="text/javascript" src="Pessoas.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#Exportar-dados").click(function(e){
+                e.preventDefault();
+                var DivTabela = document.getElementById("dtPessoas");
+                var Dados = new Blob(['\ufeff' + DivTabela.outerHTML], {type:'application/vnd.ms-excel'});
+                var url = window.URL.createObjectURL(Dados);
+
+                var a = document.createElement('a');
+
+                a.href = url;
+                a.download = 'Dados Pedidos';
+                a.click();
+            })
+        })
+    </script>
+    <style>
+        #dfPessoas{
+            font: 14px Verdana;
+            margin-left: 35%;
+            margin-top: 50px;
+        }
+        #dtPessoas{
+            font: 14px Verdana;
+            background-color: green;
+        }
+        table tr td{
+            width: 140px;
+        }
+        input{
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 6px;
+            width: 175px;
+            height: 30px;
+            transition: 0.5s;
+            text-align: center;
+        }
+        .inputform{
+            width: 355px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="dfPessoas">
+        <form name="fPessoas">
+            <label style="margin-left: 142px;" for="professor">professor: *</label>
+            <br>
+            <input class="inputform" type="text" name="txtprofessor" id="txtprofessor" placeholder="Seu nome teacher :D" required autocomplete="on">
+            <br>
+            <br>
+            <label style="margin-left: 125px;" for="equipamento">equipamento: *</label>
+            <br>
+            <input class="inputform" type="text" name="txtequipamento" id="txtequipamento" placeholder="Equipamento:" required autocomplete="on">
+            <br>
+            <br>
+            <label style="margin-left: 115px;" for="id_equipamento">id_equipamento: *</label>
+            <br>
+            <input class="inputform" type="number" name="txtid_equipamento" id="txtid_equipamento" placeholder="numero equipamento:" required autocomplete="on">
+            <br>
+            <br>
+            <label style="margin-left: 120px;" for="data_agendada">data_agendada: *</label>
+            <br>
+            <input class="inputform" type="date" name="txtdata_agendada" id="txtdata_agendada" placeholder="data de uso do equipamento" required autocomplete="on">
+            <br>
+            <br>
+            <label style="margin-left: 97px;" for="aula_com_equipamento">aula com equipamento: *</label>
+            <br>
+            <input class="inputform" type="text" name="txtaula_com_equipamento" id="txtaula_com_equipamento" placeholder="aula com o equipamento:" required autocomplete="on">
+            <br>
+            <br>
+            <input type="button" style="background-color: blue; color: white;" value="Reservar Equipamento" onclick="cadPessoas(txtprofessor.value, txtequipamento.value, txtid_equipamento.value, txtdata_agendada.value, txtaula_com_equipamento.value)">
+
+            <input type="button" style="background-color: blue; color: white;" value="Deletar" onclick="delRegistro()">
+
+            <input type="button" value="Exportar dados para planilha" id="Exportar-dados" style="background-color: blue; color: white;">
+            <br>
+            <br>
+        </form>
+    </div>
+
+    <div id="dtPessoas">
+        <table id="tbPessoas" class="table table-dark">
+            <thead>
+                <tr>
+                    <td>Professor</td>
+                    <td>Equipamento</td>
+                    <td>Id equipamento</td>
+                    <td>Data agendada</td>
+                    <td>Aula com equipamento</td>  
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

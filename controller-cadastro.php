@@ -18,7 +18,7 @@ $con = require 'connection.php';
 if(!isset($con)){
     die("Conexão falhou!");
 }
-$sql = "INSERT INTO docentes(nome, senha, cpf) VALUES(:nome, :senha, :cpf)"; 
+$sql = "INSERT INTO professores1(nome, senha, cpf) VALUES(:nome, :senha, :cpf)"; 
 
 $stmt = $con->prepare($sql);
 $stmt->bindParam(':nome', $nome);

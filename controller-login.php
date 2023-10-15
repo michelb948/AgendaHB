@@ -12,7 +12,7 @@ if (!isset($cpf, $senha)) {
 
 $con = require 'connection.php';
 
-$sql = 'select * from docentes where cpf = ' . $cpf;
+$sql = 'select * from professores1 where cpf = ' . $cpf;
 
 $stmt = $con->query($sql, PDO::FETCH_ASSOC);
 
@@ -25,7 +25,7 @@ if (!count($result) > 0) {
 $usuario = $result[0];
 
 if (password_verify($senha, $usuario['senha'])) {
-    header('location: Menu.php');
+    header('location: altTabelas.html');
 } else {
     die('Usuário e/ou senha invalidos.');
 }
